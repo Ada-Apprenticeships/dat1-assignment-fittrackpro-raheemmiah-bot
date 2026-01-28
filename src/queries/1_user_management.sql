@@ -15,7 +15,10 @@ WHERE member_id = 5;
 -- Updates the member's contact information (the phone number and email address) primary key value 5.The WHERE clause makes sure that only one row is affected.
 
 -- 1.3
-
+SELECT
+    COUNT(*) AS total_members
+FROM members;
+-- COUNT(*) counts the total number of rows in the members table, which represents the total number of members
 
 -- 1.4
 
