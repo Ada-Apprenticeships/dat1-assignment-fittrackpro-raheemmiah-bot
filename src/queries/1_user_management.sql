@@ -22,7 +22,25 @@ FROM members;
 -- COUNT(*) counts the total number of rows in the members table, which represents the total number of members
 
 -- 1.4
-
+SELECT
+    m.member_id,
+    m.first_name,
+    m.last_name,
+    COUNT(*) 
+AS registration_count
+FROM members 
+AS m
+JOIN class_attendance 
+AS ca
+ON ca.member_id = m.member_id
+WHERE ca.attendance_status = 'Registered'
+GROUP BY
+    m.member_id,
+    m.first_name,
+    m.last_name
+ORDER BY registration_count DESC
+LIMIT 1;
+-- Finds the member with the most class registrations by counting how many times each member appears in the class_attendance table with a status of 'Registered'
 
 -- 1.5
 
