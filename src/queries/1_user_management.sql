@@ -28,10 +28,8 @@ SELECT
     m.last_name,
     COUNT(*) 
 AS registration_count
-FROM members 
-AS m
-JOIN class_attendance 
-AS ca
+FROM members AS m
+JOIN class_attendance AS ca
 ON ca.member_id = m.member_id
 WHERE ca.attendance_status = 'Registered'
 GROUP BY
