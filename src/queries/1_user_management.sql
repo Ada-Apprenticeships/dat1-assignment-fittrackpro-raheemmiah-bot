@@ -16,7 +16,8 @@ WHERE member_id = 5;
 
 -- 1.3
 SELECT
-    COUNT(*) AS total_members
+    COUNT(*) 
+AS total_members
 FROM members;
 -- COUNT(*) counts the total number of rows in the members table, which represents the total number of members
 
