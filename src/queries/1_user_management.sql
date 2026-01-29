@@ -16,7 +16,7 @@ WHERE member_id = 5;
 
 -- 1.3
 SELECT
-    COUNT(*) 
+    COUNT(*)
 AS total_members
 FROM members;
 -- COUNT(*) counts the total number of rows in the members table, which represents the total number of members
@@ -26,8 +26,7 @@ SELECT
     m.member_id,
     m.first_name,
     m.last_name,
-    COUNT(*) 
-AS registration_count
+    COUNT(*) AS registration_count
 FROM members AS m
 JOIN class_attendance AS ca
 ON ca.member_id = m.member_id
