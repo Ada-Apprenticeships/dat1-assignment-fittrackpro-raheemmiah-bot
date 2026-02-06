@@ -20,4 +20,12 @@ ORDER BY month;
 -- Calculates total monthly revenue from membership fees between November 2024 and February 2025
 
 -- 2.3 
-
+SELECT
+    payment_id,
+    amount,
+    payment_date,
+    payment_method
+FROM payments
+WHERE payment_type = 'Day pass'
+ORDER BY payment_date;
+-- Retrieves all day pass purchases by filtering the payments table to rows where payment_type is 'Day pass'
