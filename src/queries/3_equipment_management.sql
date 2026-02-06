@@ -1,5 +1,6 @@
 .open fittrackpro.db
 .mode column
+.headers ON
 
 -- 3.1 
 SELECT
