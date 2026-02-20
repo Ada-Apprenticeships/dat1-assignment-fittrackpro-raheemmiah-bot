@@ -75,3 +75,65 @@ CREATE TABLE equipment (
     location_id INTEGER,
     FOREIGN KEY (location_id) REFERENCES locations(location_id)
 );
+
+CREATE TABLE equipment_maintenance_log (
+    log_id INTEGER PRIMARY KEY,
+    equipment_id INTEGER,
+    maintenance_date TEXT,
+    description TEXT,
+    staff_id INTEGER,
+    FOREIGN KEY (equipment_id) REFERENCES equipment(equipment_id),
+    FOREIGN KEY (staff_id) REFERENCES staff(staff_id)
+);
+
+CREATE TABLE payments (
+    payment_id INTEGER PRIMARY KEY,
+    member_id INTEGER,
+    amount REAL,
+    payment_date TEXT,
+    payment_method TEXT,
+    payment_type TEXT,
+    FOREIGN KEY (member_id) REFERENCES members(member_id)
+);
+
+CREATE TABLE personal_training_sessions (
+    session_id INTEGER PRIMARY KEY,
+    member_id INTEGER,
+    staff_id INTEGER,
+    session_date TEXT,
+    start_time TEXT,
+    end_time TEXT,
+    notes TEXT,
+    FOREIGN KEY (member_id) REFERENCES members(member_id),
+    FOREIGN KEY (staff_id) REFERENCES staff(staff_id)
+);
+
+CREATE TABLE member_health_metrics (
+    metric_id INTEGER PRIMARY KEY,
+    member_id INTEGER,
+    measurement_date TEXT,
+    weight REAL,
+    body_fat_percentage REAL,
+    muscle_mass REAL,
+    bmi REAL,
+    FOREIGN KEY (member_id) REFERENCES members(member_id)
+);
+
+CREATE TABLE attendance (
+    attendance_id INTEGER PRIMARY KEY,
+    member_id INTEGER,
+    location_id INTEGER,
+    check_in_time TEXT,
+    check_out_time TEXT,
+    FOREIGN KEY (member_id) REFERENCES members(member_id),
+    FOREIGN KEY (location_id) REFERENCES locations(location_id)
+);
+
+CREATE TABLE class_attendance (
+    class_attendance_id INTEGER PRIMARY KEY,
+    schedule_id INTEGER,
+    member_id INTEGER,
+    attendance_status TEXT,
+    FOREIGN KEY (schedule_id) REFERENCES class_schedule(schedule_id),
+    FOREIGN KEY (member_id) REFERENCES members(member_id)
+);
