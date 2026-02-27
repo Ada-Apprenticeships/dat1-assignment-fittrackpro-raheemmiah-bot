@@ -10,7 +10,6 @@ SELECT
     position AS role
 FROM staff
 ORDER BY position, staff_id;
--- Lists all staff members by role by selecting staff details and ordering results by position
 
 -- 7.2 
 SELECT
@@ -26,4 +25,3 @@ WHERE s.position = 'Trainer'
   AND pts.session_date <= date('2025-01-20', '+30 day')
 GROUP BY s.staff_id, s.first_name, s.last_name
 ORDER BY session_count DESC;
--- Finds trainers with sessions in the next 30 days from 20 Jan 2025 by counting sessions per trainer

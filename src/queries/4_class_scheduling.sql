@@ -14,7 +14,6 @@ JOIN classes AS c
 JOIN staff AS s
     ON cs.staff_id = s.staff_id
 ORDER BY c.class_id;
--- Lists classes with their instructors by joining class_schedule with classes and staff using matching IDs
 
 -- 4.2 
 SELECT
@@ -38,7 +37,6 @@ GROUP BY
     cs.end_time,
     c.capacity
 ORDER BY cs.start_time;
--- Listing classes on 1 Feb 2025 and calculates available spots by subtracting the registered attendees from the class capacity
 
 -- 4.3 
 INSERT INTO class_attendance (schedule_id, member_id, attendance_status)
@@ -51,14 +49,12 @@ VALUES (
     11,
     'Registered'
 );
--- Registers member ID 11 for the spin class scheduled on 1 Feb 2025 by inserting a registered record into class_attendance using the matching schedule_id
 
 -- 4.4 
 UPDATE class_attendance
 SET attendance_status = 'Unattended'
 WHERE member_id = 3
   AND schedule_id = 7;
--- Cancels a class registration by updating the attendance status to unattended for the specified member and schedule
 
 -- 4.5 
 SELECT
@@ -76,7 +72,6 @@ GROUP BY
     c.name
 ORDER BY registration_count DESC
 LIMIT 1;
--- Finds the most popular class by counting registered attendances per class and returning the highest total
 
 -- 4.6 
 SELECT AVG(class_count) AS avg_classes_per_member
@@ -88,4 +83,3 @@ FROM (
     WHERE attendance_status IN ('Registered', 'Attended')
     GROUP BY member_id
 );
--- Calculates the average number of classes per member by counting registered/attended classes per member and averaging those counts

@@ -14,7 +14,6 @@ JOIN members AS m
     ON ms.member_id = m.member_id
 WHERE ms.status = 'Active'
 ORDER BY m.member_id;
--- Lists active memberships by joining members with memberships and filtering rows with status active
 
 -- 5.2 
 SELECT
@@ -26,7 +25,6 @@ JOIN memberships AS ms
     ON a.member_id = ms.member_id
 GROUP BY ms.type
 ORDER BY membership_type;
--- Calculates the average visit duration in minutes by subtracting check in from check-out times and averaging per membership type
 
 -- 5.3 
 SELECT
@@ -41,4 +39,3 @@ JOIN members AS m
 WHERE ms.end_date >= '2025-01-01'
   AND ms.end_date <= '2025-12-31'
 ORDER BY ms.end_date;
--- Lists members whose memberships expire in 2025 by joining members with memberships and filtering end dates within the range of 2025

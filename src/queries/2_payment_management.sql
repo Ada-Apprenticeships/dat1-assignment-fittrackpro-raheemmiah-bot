@@ -5,7 +5,6 @@
 -- 2.1 
 INSERT INTO payments (member_id, amount, payment_date, payment_method, payment_type)
 VALUES (11, 50.00, datetime('now'), 'Credit Card', 'Monthly membership fee');
--- Inserts a new payment record for member ID 11 with the specified amount, payment method, payment type and the current date and time
 
 -- 2.2 
 SELECT
@@ -17,7 +16,6 @@ WHERE payment_type = 'Monthly membership fee'
   AND payment_date <  '2025-03-01'
 GROUP BY strftime('%Y-%m', payment_date)
 ORDER BY month;
--- Calculates total monthly revenue from membership fees between November 2024 and February 2025
 
 -- 2.3 
 SELECT
@@ -28,4 +26,3 @@ SELECT
 FROM payments
 WHERE payment_type = 'Day pass'
 ORDER BY payment_date;
--- Retrieves all day pass purchases by filtering the payments table to rows where payment_type is 'Day pass'

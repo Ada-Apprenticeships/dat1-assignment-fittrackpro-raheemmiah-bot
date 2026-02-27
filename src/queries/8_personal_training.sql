@@ -18,4 +18,3 @@ JOIN staff AS s
 WHERE s.first_name = 'Ivy'
   AND s.last_name = 'Irwin'
 ORDER BY pts.session_date, pts.start_time;
--- Lists all personal training sessions for Ivy Irwin by joining sessions with members and filtering by the trainer’s name

@@ -11,7 +11,6 @@ FROM equipment
 WHERE next_maintenance_date >= '2025-01-01'
   AND next_maintenance_date <= date('2025-01-01', '+30 day')
 ORDER BY next_maintenance_date;
--- Retrieves equipment scheduled for maintenance within 30 days from 1 January 2025 by filtering dates in the specified range
 
 -- 3.2 
 SELECT
@@ -20,7 +19,6 @@ SELECT
 FROM equipment
 GROUP BY type
 ORDER BY equipment_type;
--- Counts how many pieces of equipment exist per type by grouping equipment records and counting rows in each group
 
 -- 3.3 
 SELECT
@@ -29,4 +27,3 @@ SELECT
 FROM equipment
 GROUP BY type
 ORDER BY equipment_type;
--- Calculates the average age of equipment in days by converting dates to numeric day values, subtracting purchase dates from current date and averaging per equipment type
