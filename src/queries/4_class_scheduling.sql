@@ -3,16 +3,14 @@
 .headers ON
 
 -- 4.1 
-SELECT
+SELECT DISTINCT
     c.class_id,
     c.name AS class_name,
     s.first_name,
     s.last_name
-FROM class_schedule AS cs
-JOIN classes AS c
-    ON cs.class_id = c.class_id
-JOIN staff AS s
-    ON cs.staff_id = s.staff_id
+FROM class_schedule cs
+JOIN classes c ON cs.class_id = c.class_id
+JOIN staff s ON cs.staff_id = s.staff_id
 ORDER BY c.class_id;
 
 -- 4.2 
@@ -26,7 +24,7 @@ FROM class_schedule AS cs
 JOIN classes AS c
     ON cs.class_id = c.class_id
 LEFT JOIN class_attendance AS ca
-    ON cs.schedule_id = ca.schedule_id
+    ON ca.schedule_id = cs.schedule_id
    AND ca.attendance_status = 'Registered'
 WHERE date(cs.start_time) = '2025-02-01'
 GROUP BY
@@ -45,14 +43,14 @@ VALUES (
      FROM class_schedule
      WHERE class_id = 1
        AND date(start_time) = '2025-02-01'
+     ORDER BY start_time
      LIMIT 1),
     11,
     'Registered'
 );
 
 -- 4.4 
-UPDATE class_attendance
-SET attendance_status = 'Unattended'
+DELETE FROM class_attendance
 WHERE member_id = 3
   AND schedule_id = 7;
 

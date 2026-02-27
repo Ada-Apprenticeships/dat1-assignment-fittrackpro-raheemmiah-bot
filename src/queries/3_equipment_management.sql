@@ -23,7 +23,7 @@ ORDER BY equipment_type;
 -- 3.3 
 SELECT
     type AS equipment_type,
-    ROUND(AVG(julianday('now') - julianday(purchase_date))) AS avg_age_days
+    ROUND(AVG(julianday('2025-01-01') - julianday(purchase_date))) AS avg_age_days
 FROM equipment
 GROUP BY type
 ORDER BY equipment_type;

@@ -27,7 +27,7 @@ LIMIT 1;
 -- 6.4 
 SELECT
     l.name AS location_name,
-    AVG(daily_count) AS avg_daily_attendance
+    ROUND(AVG(daily.daily_count), 2) AS avg_daily_attendance
 FROM (
     SELECT
         location_id,
@@ -35,8 +35,8 @@ FROM (
         COUNT(*) AS daily_count
     FROM attendance
     GROUP BY location_id, date(check_in_time)
-) AS daily
-JOIN locations AS l
-    ON daily.location_id = l.location_id
+) daily
+JOIN locations l
+  ON l.location_id = daily.location_id
 GROUP BY l.name
 ORDER BY l.name;
